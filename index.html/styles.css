@@ -1,0 +1,475 @@
+:root {
+    --blue: #101b40;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --text: #333333;
+    --muted: #555555;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+
+    /* ✅ PARALLAX GLOBAL: Fondo fijo, oscuro y texto predeterminado blanco */
+    color: var(--white); 
+    background: linear-gradient(rgba(13, 27, 71, 0.79), rgba(16, 27, 64, 0.85)), url('imagen123.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* Layout general */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+section {
+    padding: 4rem 0;
+    /* ✅ FONDO OSCURO SEMI-TRANSPARENTE (Contraste con el Parallax) */
+    background: rgba(16, 27, 64, 0.9); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+}
+
+.section-white {
+    /* ✅ FONDO CLARO SEMI-TRANSPARENTE */
+    background: rgba(255, 255, 255, 0.85); 
+    /* El texto principal de esta sección se revierte a oscuro */
+    color: var(--text);
+}
+
+h1,
+h2,
+h3 {
+    /* ✅ Títulos blancos por defecto */
+    color: var(--white); 
+    line-height: 1.2;
+}
+
+p {
+    /* ✅ Párrafos gris claro por defecto */
+    color: #e6e8ef; 
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    /* ✅ Listas gris claro por defecto */
+    color: #e6e8ef; 
+    margin-top: 0.75rem;
+}
+
+/* Revertir colores de texto para secciones claras (.section-white) */
+.section-white h2,
+.section-white h3 {
+    color: var(--blue);
+}
+
+.section-white p,
+.section-white ul {
+    color: var(--muted);
+}
+
+
+/* Header y navegación */
+
+header {
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.5px;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+}
+
+nav a {
+    font-weight: 600;
+    color: var(--text);
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus {
+    color: var(--blue);
+}
+
+.menu-toggle {
+    background: transparent;
+    border: 1px solid var(--blue);
+    color: var(--blue);
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.menu-toggle:focus,
+.menu-toggle:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+}
+
+.nav-links.open {
+    display: flex;
+}
+
+
+/* Hero principal */
+
+.hero {
+    position: relative;
+    color: var(--white);
+    padding: 5rem 0 4.5rem;
+    /* ✅ ELIMINAMOS EL FONDO REDUNDANTE (el body ya lo tiene) */
+    background: none; 
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 40%), radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.06), transparent 35%), linear-gradient(120deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+
+.hero-content {
+    display: grid;
+    gap: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text {
+    display: grid;
+    gap: 1rem;
+    max-width: 760px;
+    padding: 1.25rem 1.4rem;
+    /* ✅ ELIMINADA LA CAJA DE TEXTO PRINCIPAL (solo texto flotante) */
+    border-radius: 16px;
+}
+
+/* ✅ ESTILOS PARA LA CAJA DE NAVEGACIÓN ESTÉTICA */
+.hero-nav-box {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15); 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem; 
+}
+
+.hero-nav-box a {
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    text-decoration: none;
+}
+
+.hero-nav-box a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+/* FIN DE ESTILOS hero-nav-box */
+
+
+/* ✅ LOGO GRANDE E INDEPENDIENTE */
+.hero-brand {
+    display: inline-flex;
+    align-items: center;
+    justify-self: center; 
+    margin-bottom: 2.5rem; 
+    /* Limpio de todos los estilos de píldora */
+}
+
+.hero-brand img {
+    width: 200px; 
+    height: 200px;
+    object-fit: contain;
+    border-radius: 12px;
+    /* Limpio de background y padding */
+}
+/* FIN DE ESTILOS DE LOGO */
+
+
+.hero h1 {
+    font-size: clamp(2rem, 4.5vw, 4rem); 
+    color: var(--white);
+}
+
+.hero p {
+    color: #e6e8ef;
+    font-size: 1.05rem;
+    max-width: 760px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    color: var(--blue);
+    padding: 0.9rem 1.4rem;
+    border-radius: 10px;
+    font-weight: 700;
+    border: 2px solid var(--white);
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+}
+
+.btn:hover,
+.btn:focus {
+    background: transparent;
+    color: var(--white);
+}
+
+
+/* Cards y secciones */
+
+.section-header {
+    margin-bottom: 1.5rem;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.cards-grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.card {
+    /* ✅ Fondo casi blanco semi-transparente para que se vea el parallax */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 14px;
+    padding: 1.6rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e6e8ef;
+    /* El texto dentro de las cards vuelve a ser oscuro */
+    color: var(--muted); 
+}
+
+/* ✅ Revertir títulos dentro de las cards a oscuro */
+.card h3 {
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+.card p, .card ul {
+    color: var(--muted);
+}
+
+.card-full {
+    grid-column: 1 / -1;
+}
+
+
+/* Plan premium */
+
+.highlight {
+    /* ✅ Ajuste de colores para la sección oscura */
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 6px solid var(--white); 
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Nosotros */
+
+.values {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    margin-top: 1.5rem;
+}
+
+.pill {
+    /* ✅ Ajuste de colores para la sección oscura */
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--blue);
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+/* Contacto */
+
+form {
+    display: grid;
+    gap: 1rem;
+}
+
+/* ✅ Revertir labels a oscuro para formularios en secciones oscuras */
+label {
+    font-weight: 600;
+    color: var(--white); 
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+/* ✅ Revertir labels a oscuro para formularios en secciones claras */
+.section-white label {
+    color: var(--text);
+}
+
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.85rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid #d0d5dd;
+    font-size: 1rem;
+    background: var(--white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(16, 27, 64, 0.15);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #0c1533;
+}
+
+
+/* Footer */
+
+footer {
+    /* ✅ Footer más oscuro */
+    background: rgba(16, 27, 64, 0.95);
+    color: var(--white);
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.social a {
+    color: var(--white);
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.social a:hover,
+.social a:focus {
+    opacity: 0.8;
+}
+
+
+/* Responsive */
+
+@media (min-width: 768px) {
+    nav ul {
+        gap: 1.5rem;
+    }
+    .menu-toggle {
+        display: none;
+    }
+    .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+    }
+    .hero-content {
+        grid-template-columns: 1.2fr;
+    }
+    .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-content {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+    }
+    .cards-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
