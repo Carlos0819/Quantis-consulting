@@ -48,7 +48,7 @@
 
         /* --- TIPOGRAFÍA --- */
         h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: white; line-height: 1.1; font-weight: 700; }
-        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1.5rem; } /* Ajustado clamp mínimo */
+        h1 { font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; }
         h2 { font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 1rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         h3 { font-size: 1.25rem; margin-bottom: 1rem; color: white; }
         p { color: var(--text-muted); margin-bottom: 1.5rem; max-width: 65ch; font-size: 1rem; }
@@ -59,7 +59,7 @@
 
         /* --- HEADER --- */
         header { position: fixed; top: 0; width: 100%; z-index: 1000; transition: var(--transition); height: 90px; display: flex; align-items: center; }
-        header.scrolled { height: 70px; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        header.scrolled { height: 70px; background: rgba(10, 15, 30, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
         .nav-bar { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         
         .logo img {
@@ -73,25 +73,24 @@
         nav a:hover { color: white; }
         nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent); transition: var(--transition); }
         nav a:hover::after { width: 100%; }
-        .mobile-toggle { display: none; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; }
+        .mobile-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
         /* --- HERO SECTION --- */
-        .hero { 
-            height: 100vh; min-height: 800px; 
-            display: flex; align-items: center; position: relative; 
-            padding-top: 90px; 
-        }
-        .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
-        .hero h1 span { background: linear-gradient(to right, #3b82f6, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-buttons { display: flex; gap: 1rem; margin-top: 2rem; }
+        .hero { height: 100vh; min-height: 800px; display: flex; align-items: center; position: relative; padding-top: 90px; }
         
-        .btn { padding: 1rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+        
+        .hero h1 span { background: linear-gradient(to right, #3b82f6, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .hero-buttons { display: flex; gap: 1rem; margin-top: 2rem; }
+        .btn { padding: 1rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.5rem; }
         .btn-primary { background: var(--accent); color: white; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); border: none; cursor: pointer;}
         .btn-primary:hover { transform: translateY(-3px); background: var(--accent-glow); box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
         .btn-secondary { background: transparent; border: 1px solid var(--glass-border); color: white; }
         .btn-secondary:hover { border-color: var(--accent); background: rgba(59, 130, 246, 0.1); }
         
         .hero-visual { position: relative; height: 500px; display: flex; align-items: center; justify-content: center; }
+        
         .hero-big-logo { 
             width: 120%; max-height: 120%; object-fit: contain; 
             filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)) var(--logo-neon-subtle); 
@@ -129,23 +128,12 @@
 
         /* --- PORTAFOLIO STYLES --- */
         .portfolio-grid {
-            display: flex; 
-            justify-content: center; 
-            gap: 3rem; 
-            flex-wrap: nowrap; 
-            align-items: center; 
-            margin-top: 4rem;
-            max-width: 100%;
-            overflow-x: auto; 
-            /* Ocultar barra */
-            scrollbar-width: none; 
-            -ms-overflow-style: none;
+            display: flex; justify-content: center; gap: 3rem; flex-wrap: nowrap; align-items: center; margin-top: 4rem;
+            max-width: 100%; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
         }
         .portfolio-grid::-webkit-scrollbar { display: none; }
-
         .portfolio-item { display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; }
 
-        /* Tamaños Escritorio */
         #item-maxus { width: 280px; height: 160px; }
         #item-jetour { width: 320px; height: 200px; margin: 0 1rem; }
         #item-saav { width: 420px; height: 260px; }
@@ -167,60 +155,27 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
         footer { border-top: 1px solid var(--glass-border); padding: 4rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
 
-        /* --- ✅ RESPONSIVE MEJORADO --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .mobile-toggle { display: block; z-index: 1001; }
-            
-            nav { 
-                position: fixed; top: 0; right: -100%; width: 85%; height: 100vh; 
-                background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(20px); 
-                padding: 6rem 2rem; transition: var(--transition); z-index: 1000; 
-                border-left: 1px solid var(--glass-border); 
-            }
+            nav { position: fixed; top: 0; right: -100%; width: 85%; height: 100vh; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(20px); padding: 6rem 2rem; transition: var(--transition); z-index: 1000; border-left: 1px solid var(--glass-border); }
             nav.open { right: 0; }
             nav ul { flex-direction: column; gap: 1.5rem; }
             nav a { font-size: 1.2rem; display: block; padding: 0.5rem 0;}
-
-            /* HEADER AJUSTES */
             header { height: 70px; }
-            .logo img { height: 50px; } /* Logo más pequeño en móvil */
-
-            /* HERO AJUSTES ANTI-CHOQUE */
-            .hero { 
-                height: auto; /* Altura automática para que crezca con el texto */
-                min-height: 100vh; 
-                display: flex; flex-direction: column; 
-                padding-top: 120px; /* Más espacio arriba para que no choque con menú */
-                padding-bottom: 4rem;
-            }
-            .hero-grid { 
-                grid-template-columns: 1fr; 
-                text-align: center; 
-                gap: 3rem; 
-            }
+            .logo img { height: 50px; }
+            
+            .hero { height: auto; min-height: 100vh; display: flex; flex-direction: column; padding-top: 120px; padding-bottom: 4rem; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
             .hero-buttons { justify-content: center; flex-wrap: wrap; }
             .hero-visual { height: auto; width: 80%; margin: 0 auto; }
             
-            /* FUENTES */
             h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-            
-            /* CARDS */
             .cards-grid { grid-template-columns: 1fr; }
             .contact-layout, .nosotros-grid, .features-grid { grid-template-columns: 1fr; }
             
-            /* PORTAFOLIO MOVIL */
-            .portfolio-grid { 
-                flex-wrap: wrap; /* En celular se apilan para verse bien */
-                gap: 3rem; 
-                overflow-x: hidden; 
-            }
-            /* Reseteamos tamaños específicos a un tamaño uniforme y grande en móvil */
-            .portfolio-item, #item-maxus, #item-jetour, #item-saav { 
-                width: 100% !important; 
-                max-width: 300px;
-                height: auto !important; 
-                margin: 0 auto; 
-            }
+            .portfolio-grid { flex-wrap: wrap; gap: 3rem; overflow-x: hidden; }
+            .portfolio-item, #item-maxus, #item-jetour, #item-saav { width: 100% !important; max-width: 300px; height: auto !important; margin: 0 auto; }
         }
     </style>
 </head>
@@ -250,17 +205,20 @@
 
     <section id="inicio" class="hero">
         <div class="container hero-grid">
+            
             <div class="hero-text reveal">
-                <h1>Business Intelligence: decisiones basadas en <br><span>datos reales</span></h1>
+                <h1>Business Intelligence: <br><span>decisiones basadas en datos</span></h1>
                 <p>Quantis Consulting te acompaña para mejorar el control operativo, la liquidez y el desempeño comercial con soluciones de inteligencia de negocios alineadas a tus objetivos.</p>
                 <div class="hero-buttons">
                     <a href="#contacto" class="btn btn-primary">Agendar reunión</a>
                     <a href="#bi-interno" class="btn btn-secondary">Ver Servicios</a>
                 </div>
             </div>
+
             <div class="hero-visual reveal">
                 <img src="logo_blanco.png" alt="Quantis Logo Animado" class="hero-big-logo">
             </div>
+            
         </div>
     </section>
 
@@ -299,6 +257,42 @@
                         <li>Acceso web con perfiles y roles</li>
                         <li>Alertas tempranas de riesgo</li>
                         <li>Reuniones quincenales de evaluación</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="detalles-paneles" class="section-padding">
+        <div class="container">
+            <h2 class="reveal text-center">Tus ventas en tiempo real</h2>
+            <p class="reveal text-center">Conoce el detalle de tus ventas e ingresos en tiempo real al alcance de tu dispositivo movil.</p>
+            
+            <div class="cards-grid">
+                <article class="card reveal">
+                    <h3>Dashboard Financiero</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Información técnica y operativa.</p>
+                    <ul>
+                        <li>Detalle de ingresos, gastos, balance neto y transacciones.</li>
+                        <li>Velocidad de ventas, brecha a meta planteada por mes, ratio de cobertura efectiva</li>
+                        <li>Informacion de cuentas por cobrar y cartera de deuda</li>
+                        <li>Ingresos, distribución y gastos de la empresa</li>
+                        <li>Registro de transacciones realizadas por la empresa</li>
+                    </ul>
+                </article>
+
+                <article class="card reveal">
+                    <h3>Panel de Ventas Diarias</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Información técnica y comercial.</p>
+                    <ul>
+                        <li>Ventas totales de la empresa</li>
+                        <li>Descripción detallada de nuevos clientes</li>
+                        <li>Tendencia de ventas en tiempo real</li>
+                        <li>Ventas por sucursal en tiempo real</li>
+                        <li>Ticket promedio de ventas</li>
+                        <li>Monitor de precios en el mercado actualizado</li>
+                        <li>Rendimiento del equipo de ventas</li>
+
                     </ul>
                 </article>
             </div>
