@@ -40,7 +40,7 @@
         .animated-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
             background: linear-gradient(rgba(10, 15, 30, 0.85), rgba(10, 15, 30, 0.95)),
-                        url('prueba123.jpg');
+                        url('prueba123.jpg'); /* Asegurate de que esta imagen exista o quitala si da error */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -96,7 +96,12 @@
             filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)) var(--logo-neon-subtle); 
             animation: float 6s ease-in-out infinite; 
         }
-        @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-25px) scale(1.02); } }
+        
+        /* Definimos la animación float una sola vez para usarla en todo lado */
+        @keyframes float { 
+            0%, 100% { transform: translateY(0) scale(1); } 
+            50% { transform: translateY(-25px) scale(1.02); } 
+        }
 
         /* --- TARJETAS & GRILLAS --- */
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
@@ -126,20 +131,48 @@
         .nosotros-item { text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border: 1px solid transparent; transition: var(--transition); }
         .nosotros-item:hover { border-color: var(--accent-glow); background: rgba(255,255,255,0.06); transform: translateY(-5px); box-shadow: var(--neon-shadow); }
 
-        /* --- PORTAFOLIO STYLES --- */
+        /* --- PORTAFOLIO STYLES (CORREGIDO) --- */
         .portfolio-grid {
-            display: flex; justify-content: center; gap: 3rem; flex-wrap: nowrap; align-items: center; margin-top: 4rem;
-            max-width: 100%; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+            display: flex; 
+            justify-content: center; 
+            gap: 3rem; 
+            flex-wrap: nowrap; 
+            align-items: center; 
+            margin-top: 4rem;
+            max-width: 100%; 
+            overflow-x: auto; 
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+            /* FIX: Agregamos padding vertical para que la animación hacia arriba no se corte */
+            padding-top: 40px; 
+            padding-bottom: 40px;
         }
         .portfolio-grid::-webkit-scrollbar { display: none; }
-        .portfolio-item { display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; }
+        
+        .portfolio-item { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            flex-shrink: 0; 
+        }
 
         #item-maxus { width: 280px; height: 160px; }
         #item-jetour { width: 320px; height: 200px; margin: 0 1rem; }
+        
+        /* Ajuste para SAAV: aseguramos espacio */
         #item-saav { width: 420px; height: 260px; }
 
-        .client-logo { max-width: 100%; max-height: 100%; object-fit: contain; transition: var(--transition); }
+        .client-logo { 
+            max-width: 100%; 
+            /* FIX: Cambiamos de max-height 100% a 85% para dar margen de movimiento dentro de la caja */
+            max-height: 85%; 
+            object-fit: contain; 
+            transition: var(--transition); 
+            will-change: transform; /* Optimización para animación */
+        }
         .client-logo:hover { filter: var(--logo-neon-subtle); }
+        
         .float-neon { animation: float 5s ease-in-out infinite; }
 
         /* --- CONTACTO & FOOTER --- */
@@ -174,8 +207,8 @@
             .cards-grid { grid-template-columns: 1fr; }
             .contact-layout, .nosotros-grid, .features-grid { grid-template-columns: 1fr; }
             
-            .portfolio-grid { flex-wrap: wrap; gap: 3rem; overflow-x: hidden; }
-            .portfolio-item, #item-maxus, #item-jetour, #item-saav { width: 100% !important; max-width: 300px; height: auto !important; margin: 0 auto; }
+            .portfolio-grid { flex-wrap: wrap; gap: 3rem; overflow-x: hidden; padding-top: 2rem; padding-bottom: 2rem; }
+            .portfolio-item, #item-maxus, #item-jetour, #item-saav { width: 100% !important; max-width: 300px; height: auto !important; margin: 0 auto; min-height: 200px; }
         }
     </style>
 </head>
